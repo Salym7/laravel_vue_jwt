@@ -13,20 +13,20 @@ const router = createRouter({
                 return import("./components/Fruit/Index.vue");
             },
         },
-        // {
-        //     path: "/people/create",
-        //     name: "person.create",
-        //     component: function () {
-        //         return import("./components/Person/Create.vue");
-        //     },
-        // },
-        // {
-        //     path: "/people/:id/edit",
-        //     name: "person.edit",
-        //     component: function () {
-        //         return import("./components/Person/Edit.vue");
-        //     },
-        // },
+        {
+            path: "/users/login",
+            name: "user.login",
+            component: function () {
+                return import("./components/User/Login.vue");
+            },
+        },
+        {
+            path: "/users/registration",
+            name: "user.registration",
+            component: function () {
+                return import("./components/User/Registration.vue");
+            },
+        },
         // {
         //     path: "/people/:id",
         //     name: "person.show",
