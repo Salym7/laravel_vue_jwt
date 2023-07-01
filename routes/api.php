@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Fruit\FruitController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'users'], function () {
     Route::post('/', [UserController::class, 'store']);
+});
+Route::group(['prefix' => 'fruits'], function () {
+    Route::get('/', [FruitController::class, 'index']);
 });
 // Route::group(['namespace' => 'App\Http\Controllers\User', 'prefix' => 'users'], function () {
 //     // Route::get('/', 'IndexController');
