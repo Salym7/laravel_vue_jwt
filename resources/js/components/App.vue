@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="">
                     <router-link class="me-3" :to="{ name: 'fruit.index' }"
-                        >test</router-link
+                        >List</router-link
                     >
                     <router-link class="me-3" :to="{ name: 'user.login' }"
                         >Login</router-link
@@ -13,6 +13,9 @@
                         class="me-3"
                         :to="{ name: 'user.registration' }"
                         >Registration</router-link
+                    >
+                    <router-link class="me-3" :to="{ name: 'user.personal' }"
+                        >Personal</router-link
                     >
                     <RouterView></RouterView>
                 </div>

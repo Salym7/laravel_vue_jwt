@@ -27,6 +27,13 @@ const router = createRouter({
                 return import("./components/User/Registration.vue");
             },
         },
+        {
+            path: "/users/personal",
+            name: "user.personal",
+            component: function () {
+                return import("./components/User/Personal.vue");
+            },
+        },
         // {
         //     path: "/people/:id",
         //     name: "person.show",

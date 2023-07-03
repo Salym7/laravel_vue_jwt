@@ -31,11 +31,12 @@ Route::group([
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::post('/me', [AuthController::class, 'me']);
+
+    Route::group(['prefix' => 'fruits'], function () {
+        Route::get('/', [FruitController::class, 'index'])->middleware('auth:api');
+    });
 });
 
 Route::group(['prefix' => 'users'], function () {
     Route::post('/', [UserController::class, 'store']);
-});
-Route::group(['prefix' => 'fruits'], function () {
-    Route::get('/', [FruitController::class, 'index']);
 });

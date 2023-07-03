@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import API from "../../api"
+
 export default {
     data() {
         return {
@@ -30,11 +32,31 @@ export default {
     },
     methods: {
         getFruits() {
-            axios.get("/api/fruits").then((res) => {
+            API.get("/api/auth/fruits").then((res) => {
                 this.fruits = res.data.data
-                console.log(res.data.data)
+                console.log(res)
             })
         },
+        // getFruits() {
+        //     axios
+        //         .get("/api/auth/fruits", {
+        //             headers: {
+        //                 authorization: `Bearer ${localStorage.getItem(
+        //                     "access_token"
+        //                 )}`,
+        //             },
+        //         })
+        //         .then((res) => {
+        //             this.fruits = res.data.data
+        //             console.log(res.data.data)
+        //         })
+        //         .catch((err) => {
+        //             console.log(err.response.status)
+        //             err.response.status === 401
+        //                 ? this.$router.push({ name: "user.login" })
+        //                 : ""
+        //         })
+        // },
     },
 }
 </script>
