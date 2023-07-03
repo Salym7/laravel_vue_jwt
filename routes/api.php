@@ -33,7 +33,7 @@ Route::group([
     Route::post('/me', [AuthController::class, 'me']);
 
     Route::group(['prefix' => 'fruits'], function () {
-        Route::get('/', [FruitController::class, 'index'])->middleware('auth:api');
+        Route::get('/', [FruitController::class, 'index'])->middleware('jwt.auth');
     });
 });
 

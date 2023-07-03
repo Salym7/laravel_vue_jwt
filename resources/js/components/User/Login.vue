@@ -23,6 +23,7 @@
             value="login"
             @click.prevent="login"
         />
+        <div v-if="error" class="mt-3 text-danger">{{ error }}</div>
     </div>
 </template>
 
@@ -32,6 +33,7 @@ export default {
         return {
             email: null,
             password: null,
+            error: null,
         }
     },
     mounted() {
@@ -48,6 +50,9 @@ export default {
                     console.log(res.data.access_token)
                     localStorage.access_token = res.data.access_token
                     this.$router.push({ name: "user.personal" })
+                })
+                .catch((error) => {
+                    this.error = error.response.data.error
                 })
         },
     },

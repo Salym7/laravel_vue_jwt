@@ -13,7 +13,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'me', 'refresh']]);
+        $this->middleware('auth:api', ['except' => ['login', 'refresh', 'me']]);
     }
 
     /**
@@ -26,7 +26,7 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Wrong password or email'], 401);
         }
 
         return $this->respondWithToken($token);

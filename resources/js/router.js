@@ -34,6 +34,13 @@ const router = createRouter({
                 return import("./components/User/Personal.vue");
             },
         },
+        {
+            path: "/:catchAll(.*)",
+            name: "404",
+            component: function () {
+                return import("./components/User/Personal.vue");
+            },
+        },
         // {
         //     path: "/people/:id",
         //     name: "person.show",
@@ -42,6 +49,28 @@ const router = createRouter({
         //     },
         // },
     ],
+});
+
+router.beforeEach((to, from, next) => {
+    const accesToken = localStorage.getItem("access_token");
+
+    if (!accesToken) {
+        if (to.name !== "user.login" || to.name !== "user.registration") {
+            return next();
+        } else {
+            return next({
+                name: "user.login",
+            });
+        }
+    }
+
+    if ((to.name === "user.login" || to.name === "user.registration") && accesToken) {
+        return next({
+            name: "user.personal",
+        });
+    }
+
+    next();
 });
 
 export default router;
