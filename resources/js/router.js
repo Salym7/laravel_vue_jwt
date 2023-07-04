@@ -55,7 +55,7 @@ router.beforeEach((to, from, next) => {
     const accesToken = localStorage.getItem("access_token");
 
     if (!accesToken) {
-        if (to.name !== "user.login" || to.name !== "user.registration") {
+        if (to.name === "user.login" || to.name === "user.registration") {
             return next();
         } else {
             return next({
